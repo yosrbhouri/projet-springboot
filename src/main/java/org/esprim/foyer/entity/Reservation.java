@@ -1,10 +1,11 @@
-package entity;
+package org.esprim.foyer.entity;
 
 
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -16,11 +17,11 @@ import java.util.Set;
 @NoArgsConstructor
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Reservation {
+public class Reservation implements Serializable {
     @Id
     String idReservation;
     Date anneeUniversitaire;
     boolean estValide;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     Set<Etudiant> etudiants;
 }
