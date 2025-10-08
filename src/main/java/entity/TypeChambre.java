@@ -1,6 +1,8 @@
 package entity;
 
 
-public enum TypeChambre {
+import java.io.Serializable;
+
+public enum TypeChambre  implements Serializable {
     SIMPLE, DOUBLE, TRIPLE
 }

@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.io.Serializable;
 import java.util.Set;
 
 
@@ -16,7 +17,7 @@ import java.util.Set;
 @NoArgsConstructor
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Chambre {
+public class Chambre  implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
