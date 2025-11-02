@@ -12,8 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-
-public class FoyerServiceImpl implements FoyerServiceI  {
+class FoyerServiceImpl implements FoyerServiceI {
 
     FoyerRepository foyerRepository;
 
