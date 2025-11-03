@@ -18,8 +18,8 @@ ReservationRepository reservationRepository;
     }
 
     @Override
-    public Reservation retrieveReservation(String reservationId) {
-        return reservationRepository.findByreservationId(reservationId);
+    public Reservation retrieveReservation(long reservationId) {
+        return reservationRepository.findById(reservationId).get();
     }
 
     @Override
@@ -28,8 +28,8 @@ ReservationRepository reservationRepository;
     }
 
     @Override
-    public void removeReservation(String reservationId) {
-        reservationRepository.deleteByIdreservationId(reservationId);
+    public void removeReservation(long reservationId) {
+        reservationRepository.deleteById(reservationId);
     }
 
     @Override

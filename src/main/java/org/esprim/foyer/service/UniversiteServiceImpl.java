@@ -1,6 +1,7 @@
 package org.esprim.foyer.service;
 
 import org.esprim.foyer.entity.Universite;
+import org.esprim.foyer.repository.UniversiteRepository;
 import org.springframework.stereotype.Service;
 
 

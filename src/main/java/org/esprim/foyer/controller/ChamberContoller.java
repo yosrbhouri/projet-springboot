@@ -26,6 +26,11 @@ public class ChamberContoller {
 
 
     }
+    @GetMapping("/retrieve-type-chambre/{chambre-type}")
+    public  Chambre retrieveTypeC(@PathVariable("chambre-type")String chambreType){
+        Chambre  chambre =chamberService.retrieveTypeC(chambreType);
+        return chambre;
+    }
 
 
     @PostMapping("/add-chambre")

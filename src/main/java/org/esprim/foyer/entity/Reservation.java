@@ -19,7 +19,7 @@ import java.util.Set;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Reservation implements Serializable {
     @Id
-    String idReservation;
+    Long idReservation;
     Date anneeUniversitaire;
     boolean estValide;
     @ManyToMany(cascade = CascadeType.ALL)

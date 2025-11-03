@@ -1,5 +1,6 @@
 package org.esprim.foyer.service;
 import org.esprim.foyer.entity.Chambre;
+import org.esprim.foyer.entity.TypeChambre;
 import org.esprim.foyer.repository.ChambreRepsitory;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +34,7 @@ public class ChamberServiceImpl implements ChamberServiceI {
         return chambreRepsitory.save(c);
     }
     @Override
-    public Chambre retrieveTypeChambre(String typeChambre) {
-        return chambreRepsitory.findByTypeChambre(typeChambre);
+    public Chambre retrieveTypeC(String typeChambre) {
+        return chambreRepsitory.findByTypeC(TypeChambre.valueOf(typeChambre.toUpperCase()));
     }
 }
