@@ -1,10 +1,11 @@
 package org.esprim.foyer.entity;
 
 
-import jakarta.persistence.*;
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -17,9 +18,10 @@ import java.io.Serializable;
 public class Universite implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long idUniversite;
-    String nomUniversite;
+    Long idUniversite;
+    String nomuniversite;
     String adresse;
+
     @OneToOne(cascade = CascadeType.ALL)
     Foyer foyer;
 }

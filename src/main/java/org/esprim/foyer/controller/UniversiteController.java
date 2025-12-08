@@ -15,6 +15,24 @@ public class UniversiteController {
 
     UniversiteServiceI universiteService;
 
+
+
+    @PostMapping("/affecter/{foyerId}")
+    public Universite affecterUniversite(
+            @PathVariable Long foyerId,
+            @RequestParam String nomuniversite
+    ) {
+        Universite universite = universiteService.affecterUniversite(foyerId, nomuniversite);
+        return universite;
+    }
+    @PutMapping("/desaffecter/{iduniversite}")
+    public Universite desaffecterUniversite(
+            @PathVariable Long iduniversite
+    ) {
+        Universite universite = universiteService.desaffecterUniversite(iduniversite);
+        return universite;
+    }
+
     // http://localhost:8089/tpfoyer/universite/retrieve-all-universites
     @GetMapping("/retrieve-all-universites")
     public List<Universite> getUniversites() {

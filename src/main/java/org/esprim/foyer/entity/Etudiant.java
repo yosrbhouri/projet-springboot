@@ -1,10 +1,10 @@
 package org.esprim.foyer.entity;
 
 
-import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
@@ -21,11 +21,11 @@ public class Etudiant implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long idEtudiant;
+    Long idEtudiant;
 
     String nomEtudiant;
     String prenomEtudiant;
-    long cinEtudiant;
+    Long cinEtudiant;
     Date dateNaissance;
 
     @ManyToMany(mappedBy = "etudiants", cascade = CascadeType.ALL)

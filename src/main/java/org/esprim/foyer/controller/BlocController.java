@@ -18,12 +18,12 @@ public class BlocController {
         return blocList;
     }
     @GetMapping("/retrieve-bloc/{bloc-id}")
-    public Bloc retrieveBloc(@PathVariable("bloc-id") long blocId){
+    public Bloc retrieveBloc(@PathVariable("bloc-id") Long blocId){
         Bloc bloc =blocServiceI.retrieveBloc(blocId);
         return bloc;
     }
     @DeleteMapping("/deletebloc/{bloc-id}")
-    public  void deleteBloc(@PathVariable("bloc-id") long blocId){
+    public  void deleteBloc(@PathVariable("bloc-id") Long blocId){
         blocServiceI.deleteBloc(blocId);
     }
     @PutMapping("/modifybloc")
@@ -37,7 +37,10 @@ public class BlocController {
         return bloc;
     }
 
-
+@PostMapping("/effect-chambres-a-bloc/{blocId}")
+    public Bloc affectChambresBloc(@PathVariable("blocId") Long blocId ,@RequestBody List<Long> numChambres){
+        return blocServiceI.affecterChambresABloc(numChambres,blocId);
+}
 
 
 

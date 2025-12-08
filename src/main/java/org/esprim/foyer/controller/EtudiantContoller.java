@@ -22,7 +22,7 @@ public class EtudiantContoller {
 
     }
     @GetMapping("/etudiant/{id-etudiant}")
-    public Etudiant retrieveEtudiantById(@PathVariable ("idEtudiant") long idEtudiant ){
+    public Etudiant retrieveEtudiantById(@PathVariable ("idEtudiant") Long idEtudiant ){
         Etudiant etudiant= etudianterviceI.retrieveEtudiant(idEtudiant);
         return etudiant;
 

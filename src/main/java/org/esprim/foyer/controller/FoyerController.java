@@ -3,10 +3,12 @@ package tn.esprit.tpfoyer.control;
 import lombok.AllArgsConstructor;
 import org.esprim.foyer.entity.Foyer;
 import org.esprim.foyer.service.FoyerServiceI;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @AllArgsConstructor
@@ -46,6 +48,20 @@ public class FoyerController {
     public Foyer modifyFoyer(@RequestBody Foyer f) {
         Foyer foyer = foyerService.modifyFoyer(f);
         return foyer;
+    }
+    @PostMapping("/add/{idUniversite}")
+    public ResponseEntity<?> ajouterFoyerEtAffecterAUniversite(
+            @RequestBody Foyer foyer,
+            @PathVariable Long idUniversite
+    ) {
+        try {
+            Foyer saved = foyerService.ajouterFoyerEtAffecterAUniversite(foyer, idUniversite);
+            return ResponseEntity.ok(saved);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(
+                    Map.of("error", e.getMessage())
+            );
+        }
     }
 
 }

@@ -16,12 +16,13 @@ public class EtudiantServiceImpl  implements EtudiantServiceI {
     }
 
     @Override
-    public Etudiant retrieveEtudiant(long idEtudiant) {
+    public Etudiant retrieveEtudiant(Long idEtudiant) {
         return etudiantRepository.findById(idEtudiant).get();
     }
 
+
     @Override
-    public void removeEtudiant(long id) {
+    public void removeEtudiant(Long id) {
         etudiantRepository.deleteById(id);
 
     }

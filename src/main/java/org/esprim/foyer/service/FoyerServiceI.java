@@ -13,7 +13,7 @@ public interface FoyerServiceI {
     public Foyer addFoyer(Foyer f);
     public void removeFoyer(Long foyerId);
     public Foyer modifyFoyer(Foyer foyer);
-
+    public Foyer ajouterFoyerEtAffecterAUniversite(Foyer foyer ,Long iduniversite);
     // Here we will add later methods calling keywords and methods calling JPQL
 
 }

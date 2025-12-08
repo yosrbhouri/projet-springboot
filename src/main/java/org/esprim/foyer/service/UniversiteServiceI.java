@@ -10,6 +10,6 @@ public interface UniversiteServiceI {
    public  void  deleteUniversiteById(long iduniversite);
    public  Universite addUniversite(Universite universite);
    public  Universite modifyUniversity(Universite universite);
-
-
+    public Universite affecterUniversite(Long foyerId, String nomuniversite);
+    public Universite desaffecterUniversite(Long iduniversite);
 }

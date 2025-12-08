@@ -1,13 +1,12 @@
 package org.esprim.foyer.entity;
 
 
-
-import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
+import java.util.*;
 
 
 @Entity
@@ -21,19 +20,21 @@ public class Chambre  implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long idChambre;
+    Long idChambre;
 
-    long numeroChambre;
+    Long numeroChambre;
 
     @Enumerated(EnumType.STRING)
     TypeChambre typeC;
 
 
 
-    @OneToMany
-    Set<Reservation> reservations;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "chambre")
+    private List<Reservation> reservations = new ArrayList<>();
 
     @ManyToOne(cascade = CascadeType.ALL)
     Bloc bloc;
+
 
 }

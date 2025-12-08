@@ -1,13 +1,15 @@
 package org.esprim.foyer.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -22,19 +24,16 @@ public class Bloc implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long idBloc;
+    Long idBloc;
 
     String nomBloc;
-    long capaciteBloc;
+   Long capaciteBloc;
 
     @ManyToOne
     Foyer foyer;
 
-
     @OneToMany(mappedBy = "bloc",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonIgnore
-    @ToString.Exclude
-    Set<Chambre> chambres = new HashSet<Chambre>();
+    List<Chambre> chambres = new ArrayList<>();
 
 
 }
