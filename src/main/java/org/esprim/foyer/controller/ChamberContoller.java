@@ -51,28 +51,29 @@ public class ChamberContoller {
 
     @GetMapping("/retrieve-all-chambres")
     public List<Chambre> getChambres() {
-        List<Chambre> listChambres = chamberService.retrieveAllChambre();
-        return listChambres;
+        List<Chambre> Chambres = chamberService.retrieveAllChambre();
+        return Chambres;
     }
     // http://localhost:8089/tpfoyer/chambre/retrieve-chambre/8
     @GetMapping("/retrieve-chambre/{chambre-id}")
     public Chambre retrieveChambre(@PathVariable("chambre-id") Long chId) {
         Chambre chamber = chamberService.retrieveChambre(chId);
+
         return chamber;
 
 
     }
     @GetMapping("/retrieve-type-chambre/{chambre-type}")
     public  Chambre retrieveTypeC(@PathVariable("chambre-type")String chambreType){
-        Chambre  chambre =chamberService.retrieveTypeC(chambreType);
-        return chambre;
+
+        return chamberService.retrieveTypeC(chambreType);
     }
 
 
     @PostMapping("/add-chambre")
     public Chambre addChambre(@RequestBody Chambre c){
-        Chambre chamber= chamberService.addChambre(c);
-        return chamber;
+     
+        return chamberService.addChambre(c);
     }
     @DeleteMapping("/remove-chambre/{chambre-id}")
     public void removeChambre(@PathVariable("chambre-id") Long chId) {
