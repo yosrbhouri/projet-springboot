@@ -72,7 +72,7 @@ public class ChamberContoller {
 
     @PostMapping("/add-chambre")
     public Chambre addChambre(@RequestBody Chambre c){
-     
+
         return chamberService.addChambre(c);
     }
     @DeleteMapping("/remove-chambre/{chambre-id}")
