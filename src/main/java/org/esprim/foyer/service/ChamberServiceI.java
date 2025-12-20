@@ -18,5 +18,6 @@ public interface ChamberServiceI {
 public void pourcentageChalbreParTypeChambre();
     List<Chambre> getChambresNonReserveParNomUniversiteEtTypeChambre(
             String nomUniversite, TypeChambre type);
+public void nbPlacesDisponibleParChambreAnneeEnCours();
 
 }

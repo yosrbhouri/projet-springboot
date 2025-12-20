@@ -8,6 +8,7 @@ import org.esprim.foyer.repository.UniversiteRepository;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,6 +40,7 @@ public class ChamberServiceImpl implements ChamberServiceI {
         }
 
     }
+
     @Override
     public List<Chambre> retrieveAllChambre() {
         return chambreRepsitory.findAll();
@@ -58,6 +60,51 @@ public class ChamberServiceImpl implements ChamberServiceI {
         return chambreRepsitory.getChambresNonReserveParNomUniversiteEtType(
                 nomUniversite, type, anneeUniversitaire);
     }
+    @Scheduled(cron = "0 */5 * * * *")
+    public void nbPlacesDisponibleParChambreAnneeEnCours() {
+        log.info("===== TACHE PLANIFIEE nbPlacesDisponibleParChambreAnneeEnCours EXECUTEE =====");
+
+        int anneeEnCours = java.time.LocalDate.now().getYear();
+        List<Chambre> chambres = chambreRepsitory.findAll();
+
+        for (Chambre chambre : chambres) {
+
+            int capacite;
+            switch (chambre.getTypeC()) {
+                case SIMPLE:
+                    capacite = 1;
+                    break;
+                case DOUBLE:
+                    capacite = 2;
+                    break;
+                case TRIPLE:
+                    capacite = 3;
+                    break;
+                default:
+                    capacite = 0;
+            }
+
+            long nbReservations = chambre.getReservations()
+                    .stream()
+                    .filter(r -> {
+                        Calendar cal = Calendar.getInstance();
+                        cal.setTime(r.getAnneeUniversitaire());
+                        return cal.get(Calendar.YEAR) == anneeEnCours;
+                    })
+
+                    .count();
+
+            int placesDisponibles = capacite - (int) nbReservations;
+
+            if (placesDisponibles <= 0) {
+                log.info("La chambre {} est complete", chambre.getNumeroChambre());
+            } else {
+                log.info("Le nombre de place disponible pour la chambre {} est {}",
+                        chambre.getNumeroChambre(), placesDisponibles);
+            }
+        }
+    }
+
 
 
     @Override
